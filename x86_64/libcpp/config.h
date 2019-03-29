@@ -15,12 +15,18 @@
 /* Define to 1 if using `alloca.c'. */
 /* #undef C_ALLOCA */
 
+/* Define if you want assertions enabled. This is a cheap check. */
+#define ENABLE_ASSERT_CHECKING 1
+
 /* Define to enable system headers canonicalization. */
 #define ENABLE_CANONICAL_SYSTEM_HEADERS 1
 
 /* Define to 1 if translation of program messages to the user's native
    language is requested. */
-/*#define ENABLE_NLS 1*/
+/* #undef ENABLE_NLS */
+
+/* Define to get calls to the valgrind runtime enabled. */
+/* #undef ENABLE_VALGRIND_ANNOTATIONS */
 
 /* Define if you want to workaround valgrind (a memory checker) warnings about
    possible memory leaks because of libcpp use of interior pointers. */

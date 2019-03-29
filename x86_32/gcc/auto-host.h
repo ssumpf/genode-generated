@@ -31,7 +31,7 @@
 #endif
 
 
-/* Define to 1 if you want more run-time sanity checks. This one gets a grab
+/* Define to 0/1 if you want more run-time sanity checks. This one gets a grab
    bag of miscellaneous but relatively cheap checks. */
 #ifndef USED_FOR_TARGET
 #define CHECKING_P 0
@@ -109,6 +109,13 @@
 #endif
 
 
+/* Define to 0/1 if you want extra run-time checking that might affect code
+   generation. */
+#ifndef USED_FOR_TARGET
+#define ENABLE_EXTRA_CHECKING 0
+#endif
+
+
 /* Define to 1 to enable fixed-point arithmetic extension to C. */
 #ifndef USED_FOR_TARGET
 #define ENABLE_FIXED_POINT 0
@@ -172,7 +179,7 @@
 /* Define to 1 if translation of program messages to the user's native
    language is requested. */
 #ifndef USED_FOR_TARGET
-/*#define ENABLE_NLS 1*/
+/* #undef ENABLE_NLS */
 #endif
 
 
@@ -234,6 +241,12 @@
 #endif
 
 
+/* Define 0/1 if vtable verification feature is enabled. */
+#ifndef USED_FOR_TARGET
+#define ENABLE_VTABLE_VERIFY 0
+#endif
+
+
 /* Define to 1 if installation paths should be looked up in the Windows
    Registry. Ignored on non-Windows hosts. */
 #ifndef USED_FOR_TARGET
@@ -272,6 +285,12 @@
 #endif
 
 
+/* Define if your avr assembler supports -mgcc-isr option. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_AS_AVR_MGCCISR_OPTION */
+#endif
+
+
 /* Define if your avr assembler supports --mlink-relax option. */
 #ifndef USED_FOR_TARGET
 /* #undef HAVE_AS_AVR_MLINK_RELAX_OPTION */
@@ -293,7 +312,7 @@
 /* Define to the level of your assembler's compressed debug section support.
    */
 #ifndef USED_FOR_TARGET
-#define HAVE_AS_COMPRESS_DEBUG 1
+#define HAVE_AS_COMPRESS_DEBUG 2
 #endif
 
 
@@ -337,6 +356,12 @@
    preserves file table indices exactly as given. */
 #ifndef USED_FOR_TARGET
 #define HAVE_AS_DWARF2_DEBUG_LINE 1
+#endif
+
+
+/* Define if your assembler supports views in dwarf2 .loc directives. */
+#ifndef USED_FOR_TARGET
+#define HAVE_AS_DWARF2_DEBUG_VIEW 1
 #endif
 
 
@@ -419,6 +444,12 @@
 #endif
 
 
+/* Define 0/1 if your assembler and linker support @GOT. */
+#ifndef USED_FOR_TARGET
+#define HAVE_AS_IX86_GOT32X 1
+#endif
+
+
 /* Define if your assembler supports HLE prefixes. */
 #ifndef USED_FOR_TARGET
 #define HAVE_AS_IX86_HLE 1
@@ -470,6 +501,13 @@
 /* Define to 1 if your assembler and linker support @tlsldmplt. */
 #ifndef USED_FOR_TARGET
 #define HAVE_AS_IX86_TLSLDMPLT 0
+#endif
+
+
+/* Define 0/1 if your assembler and linker support calling ___tls_get_addr via
+   GOT. */
+#ifndef USED_FOR_TARGET
+#define HAVE_AS_IX86_TLS_GET_ADDR_GOT 0
 #endif
 
 
@@ -636,6 +674,12 @@
 #endif
 
 
+/* Define if your assembler supports SPARC6 instructions. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_AS_SPARC6 */
+#endif
+
+
 /* Define if your assembler and linker support GOTDATA_OP relocs. */
 #ifndef USED_FOR_TARGET
 /* #undef HAVE_AS_SPARC_GOTDATA_OP */
@@ -677,6 +721,12 @@
 /* Define if your assembler supports VSX instructions. */
 #ifndef USED_FOR_TARGET
 /* #undef HAVE_AS_VSX */
+#endif
+
+
+/* Define if your assembler supports -xbrace_comment option. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_AS_XBRACE_COMMENT_OPTION */
 #endif
 
 
@@ -1229,7 +1279,7 @@
 
 /* Define if your assembler supports @gnu_unique_object. */
 #ifndef USED_FOR_TARGET
-#define HAVE_GAS_GNU_UNIQUE_OBJECT 1
+/* #undef HAVE_GAS_GNU_UNIQUE_OBJECT */
 #endif
 
 
@@ -1398,12 +1448,6 @@
 #endif
 
 
-/* Define if isl_options_set_schedule_serialize_sccs exists. */
-#ifndef USED_FOR_TARGET
-/* #undef HAVE_ISL_OPTIONS_SET_SCHEDULE_SERIALIZE_SCCS */
-#endif
-
-
 /* Define to 1 if you have the `kill' function. */
 #ifndef USED_FOR_TARGET
 #define HAVE_KILL 1
@@ -1441,6 +1485,13 @@
 #endif
 
 
+/* Define if your default avr linker script for avrxmega3 leaves .rodata in
+   flash. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_LD_AVR_AVRXMEGA3_RODATA_IN_FLASH */
+#endif
+
+
 /* Define if your linker supports -z bndplt */
 #ifndef USED_FOR_TARGET
 /* #undef HAVE_LD_BNDPLT_SUPPORT */
@@ -1462,7 +1513,7 @@
 
 /* Define to the level of your linker's compressed debug section support. */
 #ifndef USED_FOR_TARGET
-#define HAVE_LD_COMPRESS_DEBUG 1
+#define HAVE_LD_COMPRESS_DEBUG 3
 #endif
 
 
@@ -1523,6 +1574,18 @@
 /* Define 0/1 if your linker supports -pie option with copy reloc. */
 #ifndef USED_FOR_TARGET
 #define HAVE_LD_PIE_COPYRELOC 0
+#endif
+
+
+/* Define if your PowerPC linker has .gnu.attributes long double support. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_LD_PPC_GNU_ATTR_LONG_DOUBLE */
+#endif
+
+
+/* Define if your linker supports --push-state/--pop-state */
+#ifndef USED_FOR_TARGET
+#define HAVE_LD_PUSHPOPSTATE_SUPPORT 1
 #endif
 
 
@@ -1936,7 +1999,7 @@
 
 /* Define to the linker option to enable compressed debug sections. */
 #ifndef USED_FOR_TARGET
-#define LD_COMPRESS_DEBUG_OPTION ""
+#define LD_COMPRESS_DEBUG_OPTION "--compress-debug-sections"
 #endif
 
 
@@ -1975,6 +2038,12 @@
    */
 #ifndef USED_FOR_TARGET
 #define LT_OBJDIR ".libs/"
+#endif
+
+
+/* Value to set mingw's _dowildcard to. */
+#ifndef USED_FOR_TARGET
+/* #undef MINGW_DOWILDCARD */
 #endif
 
 
@@ -2097,13 +2166,13 @@
 
 /* GNU C Library major version number used on the target, or 0. */
 #ifndef USED_FOR_TARGET
-#define TARGET_GLIBC_MAJOR 2
+#define TARGET_GLIBC_MAJOR 0
 #endif
 
 
 /* GNU C Library minor version number used on the target, or 0. */
 #ifndef USED_FOR_TARGET
-#define TARGET_GLIBC_MINOR 23
+#define TARGET_GLIBC_MINOR 0
 #endif
 
 
@@ -2115,7 +2184,7 @@
 
 /* Define if your target C library provides stack protector support */
 #ifndef USED_FOR_TARGET
-/* #undef TARGET_LIBC_PROVIDES_SSP */
+#define TARGET_LIBC_PROVIDES_SSP 1
 #endif
 
 
@@ -2142,6 +2211,12 @@
    DLL exports wrappers to support libstdc++ function replacement. */
 #ifndef USED_FOR_TARGET
 /* #undef USE_CYGWIN_LIBSTDCXX_WRAPPERS */
+#endif
+
+
+/* Define 0/1 if your linker supports hidden thunks in linkonce sections. */
+#ifndef USED_FOR_TARGET
+/* #undef USE_HIDDEN_LINKONCE */
 #endif
 
 
